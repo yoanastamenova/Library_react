@@ -1,5 +1,5 @@
  ## STEPS TO FOLLOW WHEN USING REACT ROUTE DOM
-1. ` npm i react-router-dom ``
+1. ` npm i react-router-dom `
 2. import in main.jsx
 ```
 import { BrowserRouter } from 'react-router-dom';
