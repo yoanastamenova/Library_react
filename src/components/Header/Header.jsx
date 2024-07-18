@@ -11,6 +11,7 @@ export const Header = () => {
       <div onClick={() => navigate('/login')}> Login </div>
       <CSurfer path="/register" content="Register" />
       <CSurfer path="/services" content="Services" />
+      <CSurfer path="/users" content="Users" />
     </>
   )
 }
