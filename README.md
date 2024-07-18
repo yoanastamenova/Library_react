@@ -46,3 +46,43 @@ function App() {
 export default App;
 
 ```
+
+CREATE CUSTOM NAVIGATE
+
+1. Create it as new component in components folder
+2. In the file .jsx import the useNavigate function such as:
+
+```
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
+export const CSurfer = (
+    {
+       content,
+       path
+    }
+ ) => {
+    const navigate = useNavigate();
+    return (
+    <div onClick={() => navigate(path)}> {content} </div>
+  )
+}
+
+```
+3. Then in the Header.jsx import the created serfer as in the return function:
+```
+
+export const Header = () => {
+
+  const navigate = useNavigate();         //hook to use navigate function
+
+  return (
+    <>
+      <div onClick={() => navigate('/login')}> Login </div>
+      <CSurfer path="/register" content="Register" />
+      <CSurfer path="/services" content="Services" />
+    </>
+  )
+}
+```

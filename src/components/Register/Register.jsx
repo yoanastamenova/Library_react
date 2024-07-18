@@ -35,7 +35,7 @@ export const Register = () => {
             {/* <label htmlFor="password">Password </label> */}
             <input type="password" name="password" placeholder="Password" onChange={handleChange}/>
           </div>
-          <input type="button" value="Login" onClick={register}/>
+          <input type="button" value="Register" onClick={register}/>
         </>
       );
     }    
