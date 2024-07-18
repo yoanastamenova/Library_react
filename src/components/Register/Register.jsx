@@ -19,9 +19,32 @@ export const Register = () => {
       ))
       }
     
-       const register = () => {
+        const register = async () => {
         console.log('Register');
         console.log(credentials)
+
+        //validar la data que voy a enviar
+        //una vez si es valida vamos a llamar la BD mediante la API
+        try {
+          const request = await fetch('http://localhost:4000/register',
+            {
+              method: "POST",
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(credentials)
+            }
+          )
+  
+          const result = await request.json();
+  
+          console.log(result)
+         } catch (error) {
+          console.log(error)
+         }
+        // La api puede devolver OK o NOT OK
+        // Si la API devuelve OK -> 
+        // Si la API devuelve false  -> res.status(500)
        }
     
       return (

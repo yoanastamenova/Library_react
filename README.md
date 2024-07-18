@@ -102,3 +102,35 @@ export const Body = () => {
   )
 }
 ```
+
+
+## STEPS TO CONNECT OUR PROJECT TO OUR API
+
+1. Validate the data that will enter
+ - Go to Docker and run our DB container
+ - Go to the DB folder and elevete it as `npm run dev`
+ - Go back to the React project and ensure the server is on there as well ` npm run dev `
+ - Check if it is working as sending a petition from the React localhost
+2. Send this data to our API 
+```
+       try {
+        const request = await fetch('http://localhost:4000/register',
+          {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+          }
+        )
+
+        const result = await request.json();
+
+        console.log(result)
+       } catch (error) {
+        console.log(error)
+       }
+```
+
+3. Get a response - it could be 200 or 400 or 500
+4. If it is 200 -> 
