@@ -47,8 +47,8 @@ export const Login = () => {
       <CInput
         type="button"
         name="button"
-        placeholder="Login"
         value="login"
+        placeholder="Login"
         clickFunction={login}
       />
     </>
