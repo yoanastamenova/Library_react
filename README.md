@@ -86,3 +86,19 @@ export const Header = () => {
   )
 }
 ```
+4. Dont forget to include the path in the body as well
+``` 
+export const Body = () => {
+  return (
+    <>
+       <Routes>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/" element={<Home/>} />
+        <Route path="*" element={<NotFound />} />
+        <Route path='/register' element={<Register />}/>
+        <Route path='/services' element={<Service />}/>
+       </Routes>
+    </>
+  )
+}
+```
