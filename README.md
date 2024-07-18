@@ -104,12 +104,17 @@ export const Body = () => {
 ```
 
 
-## STEPS TO CONNECT OUR PROJECT TO OUR API
+## STEPS TO CONNECT OUR REACT PROJECT TO OUR API
 
 1. Validate the data that will enter
  - Go to Docker and run our DB container
  - Go to the DB folder and elevete it as `npm run dev`
  - Go back to the React project and ensure the server is on there as well ` npm run dev `
+ - In the library project install cors with `npm install cors` and import it in server.ts 
+ ``` js
+import cors from 'cors'
+app.use(cors())
+```
  - Check if it is working as sending a petition from the React localhost
 2. Send this data to our API 
 ```
