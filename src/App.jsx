@@ -1,14 +1,14 @@
 import "./App.css";
-import { Register } from "./components/Register/Register.jsx";
-import { Login } from "./components/Login/Login.jsx";
-import { CInput } from "./components/CInput/CInput.jsx";
+import { Footer } from "./components/Footer/Footer.jsx";
+import { Header } from "./components/Header/Header.jsx";
+import { Body } from "./views/body/Body.jsx";
 
 function App() {
-  
   return (
     <>
-      {/* <Register /> */}
-      <Login />
+      <Header />
+      <Body />
+      <Footer />
     </>
   );
 }
