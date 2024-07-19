@@ -1,8 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { registerUser } from "../../services/apiCalls";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
+  const navigate = useNavigate()
+
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -19,8 +22,13 @@ export const Register = () => {
   async function register() {
     try {
       console.log(credentials);
-
       const response = await registerUser(credentials); // guarda la repsuesta en una variale
+     
+      if(response.success){
+        navigate('/login')
+      }  else {
+        alert(response.message)
+      }
     } catch (error) {
       console.log(error);
     }
