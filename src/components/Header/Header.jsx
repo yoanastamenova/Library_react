@@ -10,7 +10,7 @@ export const Header = () => {
       <div className="flex justify-space-between">
         <div onClick={() => navigate("/login")}> Login </div>
         <CSurfer path="/register" content="Register" />
-        <CSurfer path="/services" content="Services" />
+        <CSurfer path="/books" content="Books" />
         <CSurfer path="/users" content="Users" />
       </div>
     </>
