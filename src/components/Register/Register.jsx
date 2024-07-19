@@ -1,64 +1,52 @@
-import React from 'react'
-import { useState } from 'react'
+import React from "react";
+import { useState } from "react";
+import { registerUser } from "../../services/apiCalls";
 
 export const Register = () => {
-    const [ credentials, setCredentials] = useState(
-        {
-          email: "",
-          password: ""
-        }
-      )
-    
-      const handleChange = (e) => {
-        console.log('HandleChange')
-        setCredentials(prevState => (
-        {                   //prev State gets the initial value of the credentials variable
-          ...prevState,
-           [e.target.name]: e.target.value             //la propiedad [] es dinamica
-        } 
-      ))
-      }
-    
-        const register = async () => {
-        console.log('Register');
-        console.log(credentials)
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+  });
 
-        //validar la data que voy a enviar
-        //una vez si es valida vamos a llamar la BD mediante la API
-        try {
-          const request = await fetch('http://localhost:4000/register',
-            {
-              method: "POST",
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(credentials)
-            }
-          )
-  
-          const result = await request.json();
-  
-          console.log(result)
-         } catch (error) {
-          console.log(error)
-         }
-        // La api puede devolver OK o NOT OK
-        // Si la API devuelve OK -> 
-        // Si la API devuelve false  -> res.status(500)
-       }
-    
-      return (
-        <>
-          <h1>Register</h1>
-          <div>
-            {/* <label htmlFor="email">Email </label> */}
-            <input type="email" name="email" placeholder="Email" onChange={handleChange}/>
-          </div>
-          <div>
-            {/* <label htmlFor="password">Password </label> */}
-            <input type="password" name="password" placeholder="Password" onChange={handleChange}/>
-          </div>
-          <input type="button" value="Register" onClick={register}/>
-        </>
-      );
-    }    
+  const handleChange = (e) => {
+    console.log("HandleChange");
+    setCredentials((prevState) => ({
+      //prev State gets the initial value of the credentials variable
+      ...prevState,
+      [e.target.name]: e.target.value, //la propiedad [] es dinamica
+    }));
+  };
+  async function register() {
+    try {
+      console.log(credentials);
+
+      const response = await registerUser(credentials); // guarda la repsuesta en una variale
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  return (
+    <>
+      <h1>Register</h1>
+      <div>
+        {/* <label htmlFor="email">Email </label> */}
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        {/* <label htmlFor="password">Password </label> */}
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+        />
+      </div>
+      <input type="button" value="Register" onClick={register} />
+    </>
+  );
+};

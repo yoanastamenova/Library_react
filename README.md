@@ -106,19 +106,28 @@ export const Body = () => {
 
 ## STEPS TO CONNECT OUR REACT PROJECT TO OUR API
 
-1. Validate the data that will enter
- - Go to Docker and run our DB container
- - Go to the DB folder and elevete it as `npm run dev`
- - Go back to the React project and ensure the server is on there as well ` npm run dev `
- - In the library project install cors with `npm install cors` and import it in server.ts 
+
+--- IN API PROJECT ----
+
+1. Go to Docker and run our DB container
+2. Go to the DB folder and elevete it as `npm run dev`
+3. Go back to the React project and ensure the server is on there as well ` npm run dev `
+4. In the library project install cors with `npm install cors` and import it in server.ts 
  ``` js
 import cors from 'cors'
 app.use(cors())
 ```
  - Check if it is working as sending a petition from the React localhost
-2. Send this data to our API 
+
+--- IN REACT---
+
+1. In SRC - reate new folder Services 
+2. Inside new file - apiCalls.js
+3. Inside import 
 ```
-       try {
+
+export const registerUser = async () => {
+
         const request = await fetch('http://localhost:4000/register',
           {
             method: "POST",
@@ -126,16 +135,24 @@ app.use(cors())
               'Content-Type': 'application/json'
             },
             body: JSON.stringify(credentials)
-          }
-        )
+          });
 
         const result = await request.json();
 
         console.log(result)
-       } catch (error) {
-        console.log(error)
        }
-```
 
-3. Get a response - it could be 200 or 400 or 500
-4. If it is 200 -> 
+```
+4. Import this registerUser in our Register component as 
+```
+async function register() {
+          try {
+            console.log(credentials);
+
+           const response = await registerUser(credentials)   // guarda la repsuesta en una variale
+
+          } catch (error) {
+            console.log(error)
+          }
+        }
+```
