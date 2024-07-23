@@ -3,7 +3,8 @@ import { CCard } from '../../components/CCard/CCard';
 
 export const Books = () => {
   const [books, setBooks] = useState([])
-  const token = localStorage
+  const passport = JSON.parse(localStorage.getItem("passport"))
+
     useEffect( () => {
         console.log('UseEffect');
         fetch('http://localhost:4000/books')
@@ -22,7 +23,7 @@ export const Books = () => {
   , [])
   return (
 		<>
-    <p>Bienvenido, {token}</p>
+    <p>Bienvenido, {passport.tokenData.email}</p>
 			{books.map((book, index) => (
         <CCard key={index} name={book.title} description={book.description}/>
 			))}

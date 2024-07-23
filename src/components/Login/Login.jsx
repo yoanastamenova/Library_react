@@ -26,9 +26,13 @@ export const Login = () => {
     try {
       const response = await loginUser(credentials)
       if (response.success) {
-        const decoded = jwtDecode(response.token)
-        console.log(decoded)
-        localStorage.setItem("token", response.token);
+        const decodedToken = jwtDecode(response.token)
+        console.log(decodedToken)
+        const passport = {
+          token: response.token,
+          tokenData: decodedToken
+        }
+        localStorage.setItem("passport", JSON.stringify(passport))
       } else {
         alert(response.message)
       }
