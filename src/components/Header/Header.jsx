@@ -12,6 +12,7 @@ export const Header = () => {
         <CSurfer path="/register" content="Register" />
         <CSurfer path="/books" content="Books" />
         <CSurfer path="/users" content="Users" />
+        <CSurfer path="/profile" content="Profile" />
       </div>
     </>
   );

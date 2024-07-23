@@ -7,6 +7,7 @@ import { Register } from '../../components/Register/Register.jsx';
 import { Service } from '../../components/Service/Service.jsx';
 import { User } from '../../components/Users/User.jsx';
 import { Books } from '../Books/Books.jsx';
+import { Profile } from '../profile/Profile.jsx';
 
 export const Body = () => {
   return (
@@ -19,6 +20,7 @@ export const Body = () => {
         <Route path='/services' element={<Service />}/>
         <Route path='/users' element={<User />}/>
         <Route path='/books' element={<Books />}/>
+        <Route path='/profile' element={<Profile />}/>
        </Routes>
     </>
   )

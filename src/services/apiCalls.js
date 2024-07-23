@@ -33,3 +33,7 @@ const result = await request.json();
 
 return result;
 }
+
+export const profile = async () => {
+  
+}
