@@ -12,9 +12,9 @@ export const Body = () => {
   return (
     <>
        <Routes>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/" element={<Home/>} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/login" element={<Login />}/>
         <Route path='/register' element={<Register />}/>
         <Route path='/services' element={<Service />}/>
         <Route path='/users' element={<User />}/>

@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { CInput } from "../CInput/CInput";
+import { loginUser } from "../../services/apiCalls";
+import { jwtDecode } from "jwt-decode";
 
 export const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -16,10 +18,26 @@ export const Login = () => {
       [e.target.name]: e.target.value, //la propiedad [] es dinamica
     }));
   };
-  const login = () => {
+
+
+   const login = async () => {
     console.log("Login");
     console.log(credentials);
+    try {
+      const response = await loginUser(credentials)
+      if (response.success) {
+        const decoded = jwtDecode(response.token)
+        console.log(decoded)
+        localStorage.setItem("token", response.token);
+      } else {
+        alert(response.message)
+      }
+    } catch (error) {
+      
+    }
   };
+
+
   return (
     <>
       <h1>Login</h1>

@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from 'react';
-
+import { CCard } from '../../components/CCard/CCard';
 
 export const Books = () => {
   const [books, setBooks] = useState([])
+  const token = localStorage
     useEffect( () => {
         console.log('UseEffect');
-
         fetch('http://localhost:4000/books')
-        .then(res => {
+        .then((res) => {
+          console.log(res);
             return res.json();
         })
-        .then(res => {
+        .then((res) => {
           setBooks(res.data)
             console.log(res);
         })
-        .catch(e => {
-          console.log(e);
+        .catch((e)=> {
+          console.log(e)
         })
     }
   , [])
   return (
 		<>
-			{books.map((book) => (
-        <div key={book.id} className="card">
-          <h1> {book.title} </h1>
-				  <p> { book.description }</p>
-        </div>
+    <p>Bienvenido, {token}</p>
+			{books.map((book, index) => (
+        <CCard key={index} name={book.title} description={book.description}/>
 			))}
 		</>
 	);

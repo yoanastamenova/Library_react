@@ -47,7 +47,7 @@ export default App;
 
 ```
 
-CREATE CUSTOM NAVIGATE
+## CREATE CUSTOM NAVIGATE
 
 1. Create it as new component in components folder
 2. In the file .jsx import the useNavigate function such as:
@@ -153,4 +153,47 @@ async function register() {
             console.log(error)
           }
         }
+```
+
+## STEPS TO FOLLOW CREATING VIEW
+
+1. New folder inside folder Views
+2. In this folder file jsx
+3. Inside rafc -> create const with the view name
+4. Example to importing code inside the view file
+``` 
+
+export const Books = () => {
+  const [books, setBooks] = useState([])
+    useEffect( () => {
+        console.log('UseEffect');
+
+        fetch('http://localhost:4000/books')
+        .then(res => {
+            return res.json();
+        })
+        .then(res => {
+          setBooks(res.data)
+            console.log(res);
+        })
+        .catch(e => {
+          console.log(e);
+        })
+    }
+  , [])
+  return (
+		<>
+			{books.map((book) => (
+        <div key={book.id} className="card">
+          <h1> {book.title} </h1>
+				  <p> { book.description }</p>
+        </div>
+			))}
+		</>
+	);
+}
+``` 
+5. Import path to Body views
+```
+  <Route path='/books' element={<Books />}/>
 ```
