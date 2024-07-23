@@ -34,6 +34,14 @@ const result = await request.json();
 return result;
 }
 
-export const profile = async () => {
-  
+export const profile = async (token) => {
+    const response = await fetch(`${URL}/users/profile`, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    return await response.json();
 }

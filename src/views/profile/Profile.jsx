@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CInput } from '../../components/CInput/CInput';
+import { useNavigate } from 'react-router-dom';
 
 export const Profile = () => {
     const [profileData, setProfileData] = useState({
@@ -9,14 +10,24 @@ export const Profile = () => {
         updatedAt: "",
 
     })
+    const passport = JSON.parse(localStorage.getItem("passport"));
+    let token;
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(!passport){
+            navigate('/login')
+     } else { token = passport.token; }
+    }, [
+        
+    ])
+
     const logout = () => {
         console.log("Byeeee")
         localStorage.removeItem("passport")
     }
-
-    const passport = JSON.parse(localStorage.getItem("passport"));
-    const token = passport.token;
   
+        //if(passport)
     return (
     <>
     <h2>Profile info</h2>
