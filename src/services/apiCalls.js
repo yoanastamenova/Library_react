@@ -45,3 +45,16 @@ export const profile = async (token) => {
 
     return await response.json();
 }
+export const updateProfile = async (data, token) => {
+  console.log(data);
+  const response = await fetch(`${URL}/users/update`, {
+    method: "PUT",
+    headers: {
+      'Content-Type': 'application/json',
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(data)
+  });
+
+  return await response.json();
+}

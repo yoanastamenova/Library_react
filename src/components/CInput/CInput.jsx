@@ -6,13 +6,14 @@ export const CInput = (
         name = "", 
         placeholder = "", 
         emitFunction,
+        className = "",
         clickFunction,
         value
     }
 ) => {
   return (
     <>
-      <input type={type} name={name} placeholder={placeholder} onChange={emitFunction} onClick={clickFunction} value={value}/>
+      <input type={type} name={name} placeholder={placeholder} onChange={emitFunction} onClick={clickFunction} value={value} className={className}/>
     </>
   )
 }
