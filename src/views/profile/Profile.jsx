@@ -56,13 +56,19 @@ export const Profile = () => {
   };
 
   const confirmButtonHandler = async () => {
-    const response = await updateProfile(editData, passport.token)
-    console.log(response);
+    try {
+      const response = await updateProfile(editData, passport.token)
+      console.log(response);
+    } catch (error) {
+      console.log();
+    } finally {
+      navigate(0)
+    }
   }
 
   //if(passport)
   return (
-    <div className="column">
+    <div>
       <h2>Profile info</h2>
       <p className={editing ? "hidden" : ""}>
         {" "}

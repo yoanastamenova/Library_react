@@ -3,12 +3,15 @@ import { useState } from "react";
 import { CInput } from "../CInput/CInput";
 import { loginUser } from "../../services/apiCalls";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     console.log("HandleChange");
@@ -33,14 +36,19 @@ export const Login = () => {
           tokenData: decodedToken
         }
         localStorage.setItem("passport", JSON.stringify(passport))
+        navigate('/profile');  
       } else {
         alert(response.message)
       }
+      if(response.success){
+        navigate('/login')
+      }  else {
+        alert(response.message)
+      }
     } catch (error) {
-      
+      console.log(error);
     }
-  };
-
+  }
 
   return (
     <>

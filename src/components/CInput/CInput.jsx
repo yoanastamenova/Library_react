@@ -13,7 +13,13 @@ export const CInput = (
 ) => {
   return (
     <>
-      <input type={type} name={name} placeholder={placeholder} onChange={emitFunction} onClick={clickFunction} value={value} className={className}/>
+      <input type={type} 
+      name={name} 
+      placeholder={placeholder} 
+      onChange={emitFunction} 
+      onClick={clickFunction} 
+      value={value} 
+      className={className}/>
     </>
   )
 }
