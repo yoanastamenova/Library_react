@@ -46,7 +46,6 @@ export const profile = async (token) => {
     return await response.json();
 }
 export const updateProfile = async (data, token) => {
-  console.log(data);
   const response = await fetch(`${URL}/users/update`, {
     method: "PUT",
     headers: {
@@ -54,6 +53,30 @@ export const updateProfile = async (data, token) => {
       "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(data)
+  });
+
+  return await response.json();
+}
+
+export const getAllUsers = async (token) => {
+  const response = await fetch(`${URL}/users`, {
+    method: "GET",
+    headers: {
+      'Content-Type': 'application/json',
+      "Authorization": `Bearer ${token}`
+    }
+  });
+
+  return await response.json();
+}
+
+export const deleteUserById = async (token, id) => {
+  const response = await fetch(`${URL}/users/${id}`, {
+    method: "DELETE",
+    headers: {
+      'Content-Type': 'application/json',
+      "Authorization": `Bearer ${token}`
+    }
   });
 
   return await response.json();
