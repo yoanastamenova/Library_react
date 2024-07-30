@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { profile } from "../../services/apiCalls";
 import { updateProfile } from "../../services/apiCalls";
 import "./Profile.css";
+import { useAuthorization } from "../../components/Login/Login";
 
 export const Profile = () => {
   const [profileData, setProfileData] = useState({
@@ -21,13 +22,12 @@ export const Profile = () => {
 
   const [editing, setEditing] = useState(false);
 
-  const passport = JSON.parse(localStorage.getItem("passport"));
+  const {isLoggedin} = useAuthorization
 
-  let token;
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!passport) {
+    if (false) {
       navigate("/login");
     } else {
       const bringProfile = async () => {

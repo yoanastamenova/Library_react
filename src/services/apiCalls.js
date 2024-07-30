@@ -81,3 +81,15 @@ export const deleteUserById = async (token, id) => {
 
   return await response.json();
 }
+
+export const createAppointment = async (data, token) => {
+  const response = await fetch(`${URL}/appointments/create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "applications/json",
+      "Authorization": `Brearer ${token}`
+    },
+    body: JSON.stringify(data)
+  })
+  return await response.json()
+}

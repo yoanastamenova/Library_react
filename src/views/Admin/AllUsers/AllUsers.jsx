@@ -4,7 +4,7 @@ import "./AllUsers.css"
 import { CInput } from "../../../components/CInput/CInput";
 
 export const AllUsers = () => {
-  const [users, setUser] = useState([]);
+  const [users, setUsers] = useState([]);
   const passport = JSON.parse(localStorage.getItem("passport"));
   const token = passport.token;
 
@@ -13,17 +13,26 @@ export const AllUsers = () => {
       const allUsers = await getAllUsers(token);
       console.log(allUsers);
       if(allUsers.success) {
-      setUser(allUsers.data);
+      setUsers(allUsers.data);
       }
     };
     bringAllUsers();
   }, []);
 
   const deleteUserHandler = async (e) => {
-    const id = e.target.name;
+    const id = +e.target.name;
     const res = await deleteUserById(token, id);
-    console.log(res);
-  }
+    if (res.success) {
+      const remainingUsers = users.filter((user) => {
+        if (user.id !== id) {
+            console.log(user)
+            return user
+        };
+      });
+      console.log(remainingUsers)
+      setUsers(remainingUsers);
+    }
+  };
 
   return (
     <>

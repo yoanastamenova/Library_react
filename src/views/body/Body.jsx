@@ -4,10 +4,10 @@ import { Login } from '../../components/Login/Login';
 import { Home } from '../home/Home';
 import { NotFound } from '../NotFound/NotFound.jsx';
 import { Register } from '../../components/Register/Register.jsx';
-import { Service } from '../../components/Service/Service.jsx';
 import { Books } from '../Books/Books.jsx';
 import { Profile } from '../profile/Profile.jsx';
 import { AllUsers } from '../Admin/AllUsers/AllUsers.jsx';
+import { Appointments } from '../Appointments/Appointments.jsx';
 
 
 export const Body = () => {
@@ -26,6 +26,7 @@ export const Body = () => {
         <Route path='/register' element={<Register />}/>
         <Route path='/books' element={<Books />}/>
         <Route path='/profile' element={<Profile />}/>
+        <Route path='/appointments' element={<Appointments />}/>
         { role === 'admin'  && 
         <Route path='/admin' element={<AllUsers />}/>
         }
